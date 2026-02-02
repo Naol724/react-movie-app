@@ -1,0 +1,344 @@
+/* Mobile-first responsive footer */
+.footer_outer_container {
+    background-color: #111;
+    color: #b3b3b3;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer_inner_container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Contact Section */
+.footer_contact {
+    margin-bottom: 30px;
+}
+
+.footer_contact p {
+    font-size: 16px;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+}
+
+.phone_number {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+    width: fit-content;
+}
+
+.phone_number:hover {
+    color: #e50914;
+    transform: translateX(4px);
+}
+
+.phone_number svg {
+    font-size: 18px;
+}
+
+.phone_number span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Social Icons */
+.footer_icons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: flex-start;
+}
+
+.footer_icons .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer_icons .social-icon:hover {
+    background: #e50914;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.footer_icons .social-icon svg {
+    font-size: 20px;
+    color: white;
+}
+
+/* Footer Links */
+.footer_data {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.footer_data ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer_data ul li {
+    cursor: pointer;
+    font-size: 13px;
+    color: #b3b3b3;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+    padding: 4px 0;
+    position: relative;
+}
+
+.footer_data ul li:hover {
+    color: #e50914;
+    transform: translateX(4px);
+}
+
+.footer_data ul li::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #e50914;
+    transition: width 0.3s ease;
+}
+
+.footer_data ul li:hover::before {
+    width: 6px;
+}
+
+/* Language Selector */
+.language_selector {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.language_dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border: 1px solid #b3b3b3;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    min-width: 150px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.language_dropdown:hover {
+    border-color: #e50914;
+    background-color: rgba(229, 9, 20, 0.1);
+}
+
+.language_dropdown svg {
+    font-size: 18px;
+}
+
+.language_dropdown span {
+    flex: 1;
+    font-size: 14px;
+}
+
+.dropdown_arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown_arrow.open {
+    transform: rotate(180deg);
+}
+
+.language_options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 0.3s ease;
+}
+
+.language_option {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.language_option:hover {
+    background-color: rgba(229, 9, 20, 0.1);
+    color: #e50914;
+}
+
+.language_option.selected {
+    background-color: rgba(229, 9, 20, 0.2);
+    color: #e50914;
+    font-weight: 600;
+}
+
+/* Service Code */
+.service_code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b3b3b3;
+    padding: 10px 16px;
+    margin: 20px 0;
+    cursor: pointer;
+    font-size: 13px;
+    color: #b3b3b3;
+    transition: all 0.3s ease;
+    width: fit-content;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.service_code:hover {
+    border-color: #e50914;
+    color: #e50914;
+    background-color: rgba(229, 9, 20, 0.1);
+    transform: scale(1.05);
+}
+
+/* Copyright */
+.copyright {
+    font-size: 11px;
+    color: #737373;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+/* Scrollbar styling for language options */
+.language_options::-webkit-scrollbar {
+    width: 6px;
+}
+
+.language_options::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.language_options::-webkit-scrollbar-thumb {
+    background: rgba(229, 9, 20, 0.6);
+    border-radius: 3px;
+}
+
+.language_options::-webkit-scrollbar-thumb:hover {
+    background: rgba(229, 9, 20, 0.8);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+    .footer_outer_container {
+        padding: 60px 40px 30px;
+    }
+    
+    .footer_data {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .footer_data ul li {
+        font-size: 14px;
+    }
+    
+    .service_code {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .copyright {
+        font-size: 12px;
+        text-align: left;
+    }
+    
+    .footer_icons {
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+    
+    .footer_icons .social-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .footer_icons .social-icon svg {
+        font-size: 22px;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+    .footer_outer_container {
+        padding: 80px 60px 40px;
+    }
+    
+    .footer_data {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+    
+    .footer_icons {
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    
+    .footer_icons .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .footer_icons .social-icon svg {
+        font-size: 24px;
+    }
+}
+
+/* Large desktop styles */
+@media (min-width: 1440px) {
+    .footer_data {
+        gap: 50px;
+    }
+}

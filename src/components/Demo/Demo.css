@@ -1,0 +1,227 @@
+.demo-container {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 40px 20px;
+  margin: 40px 0;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+.demo-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-title {
+  font-size: 2rem;
+  color: #e50914;
+  margin-bottom: 30px;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.demo-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border-left: 4px solid #e50914;
+  transition: all 0.3s ease;
+}
+
+.demo-section:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(5px);
+}
+
+.demo-section.highlight {
+  background: rgba(229, 9, 20, 0.05);
+  border-left: 4px solid #e50914;
+  box-shadow: 0 4px 20px rgba(229, 9, 20, 0.1);
+}
+
+.demo-section h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.feature-item {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-item:hover {
+  color: #e50914;
+  transform: translateX(5px);
+}
+
+.demo-instructions {
+  background: rgba(229, 9, 20, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  margin-top: 30px;
+}
+
+.demo-instructions h3 {
+  color: #e50914;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.instruction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.instruction-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.instruction-item:hover {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: #e50914;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+}
+
+.instruction-item.priority {
+  border: 2px solid #e50914;
+  background: rgba(229, 9, 20, 0.08);
+}
+
+.instruction-item.priority:hover {
+  background: rgba(229, 9, 20, 0.15);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.3);
+}
+
+.instruction-item strong {
+  color: #e50914;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.instruction-item {
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.demo-stats {
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1), rgba(229, 9, 20, 0.05));
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  margin-top: 30px;
+}
+
+.demo-stats h3 {
+  color: #e50914;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: #e50914;
+  transform: scale(1.05);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e50914;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .demo-title {
+    font-size: 1.5rem;
+  }
+  
+  .demo-section {
+    padding: 15px;
+  }
+  
+  .demo-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .feature-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .instruction-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .instruction-item {
+    padding: 12px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .stat-item {
+    padding: 15px;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}

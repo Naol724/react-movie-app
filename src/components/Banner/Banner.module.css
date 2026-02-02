@@ -1,0 +1,456 @@
+/* Mobile-first responsive banner carousel */
+.banner_carousel {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.carousel_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    object-fit: contain;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.banner.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.banner__contents {
+    padding: 20px;
+    z-index: 2;
+    max-width: 100%;
+    width: 100%;
+    animation: slideUpFade 1s ease 0.3s both;
+}
+
+.banner__title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.banner__description {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    max-width: 100%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+.banner__buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.7s both;
+}
+
+.banner__button {
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: rgba(51, 51, 51, 0.7);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.banner__button:hover::before {
+    left: 100%;
+}
+
+.banner__button.play {
+    color: #000;
+    background-color: #fff;
+}
+
+.banner__button:hover {
+    transform: scale(1.05);
+    background-color: rgba(51, 51, 51, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.banner__button.play:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.banner__fadeBottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(17, 17, 17, 0.8),
+        rgba(17, 17, 17, 1)
+    );
+    z-index: 1;
+}
+
+/* Carousel Navigation */
+.carousel_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.carousel_arrow:hover {
+    background: rgba(229, 9, 20, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel_arrow.prev {
+    left: 20px;
+}
+
+.carousel_arrow.next {
+    right: 20px;
+}
+
+/* Dots Indicator */
+.carousel_dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #e50914;
+    border-color: #e50914;
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    border-color: #e50914;
+    transform: scale(1.1);
+}
+
+/* Progress Bar */
+.progress_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.progress_bar {
+    height: 100%;
+    background: #e50914;
+    width: 0;
+    animation: progress 5s linear infinite;
+}
+
+/* Loading State */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+}
+
+.loadingSpinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid #e50914;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    to {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 9, 20, 0.3);
+    }
+}
+
+@keyframes progress {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+    .banner_carousel {
+        height: 80vh;
+        margin-bottom: 30px;
+    }
+    
+    .banner__contents {
+        padding: 40px;
+        max-width: 70%;
+    }
+    
+    .banner__title {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .banner__description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+        -webkit-line-clamp: 4;
+    }
+    
+    .banner__button {
+        font-size: 16px;
+        padding: 12px 24px;
+        min-width: 140px;
+    }
+    
+    .banner__buttons {
+        gap: 15px;
+    }
+    
+    .carousel_arrow {
+        font-size: 28px;
+        padding: 18px;
+    }
+    
+    .carousel_arrow.prev {
+        left: 30px;
+    }
+    
+    .carousel_arrow.next {
+        right: 30px;
+    }
+    
+    .dot {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+    .banner_carousel {
+        height: 90vh;
+        margin-bottom: 40px;
+    }
+    
+    .banner__contents {
+        padding: 60px;
+        max-width: 60%;
+    }
+    
+    .banner__title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .banner__description {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        max-width: 500px;
+        -webkit-line-clamp: 5;
+    }
+    
+    .banner__button {
+        font-size: 18px;
+        padding: 15px 30px;
+        min-width: 160px;
+    }
+    
+    .banner__buttons {
+        gap: 20px;
+    }
+    
+    .banner__fadeBottom {
+        height: 40vh;
+    }
+    
+    .carousel_arrow {
+        font-size: 32px;
+        padding: 20px;
+    }
+    
+    .carousel_arrow.prev {
+        left: 40px;
+    }
+    
+    .carousel_arrow.next {
+        right: 40px;
+    }
+    
+    .dot {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Large desktop styles */
+@media (min-width: 1440px) {
+    .banner_carousel {
+        height: 100vh;
+    }
+    
+    .banner__contents {
+        padding: 80px;
+        max-width: 50%;
+    }
+    
+    .banner__title {
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .banner__description {
+        font-size: 20px;
+        max-width: 600px;
+        margin-bottom: 35px;
+    }
+    
+    .banner__button {
+        font-size: 20px;
+        padding: 18px 35px;
+        min-width: 180px;
+    }
+    
+    .carousel_arrow.prev {
+        left: 50px;
+    }
+    
+    .carousel_arrow.next {
+        right: 50px;
+    }
+}
